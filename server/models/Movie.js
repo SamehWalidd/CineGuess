@@ -64,8 +64,8 @@ const MovieSchema = new mongoose.Schema(
   }
 );
 
-MovieSchema.pre("save", function (next) {
-  if (this.year) {
+MovieSchema.pre("validate", function (next) {
+  if (this.year != null && !Number.isNaN(this.year)) {
     this.decade = `${Math.floor(this.year / 10) * 10}s`;
   }
   next();

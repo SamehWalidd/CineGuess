@@ -51,9 +51,10 @@ const fetchMovie = async (imdbId) => {
 };
 
 const mapToSchema = (data) => {
-  const year = parseInt(data.Year);
+  const year = parseInt(data.Year, 10);
 
-  if (isNaN(year)) return null;
+  if (Number.isNaN(year)) return null;
+  if (year < 1950) return null;
 
   return {
     title:       data.Title,
