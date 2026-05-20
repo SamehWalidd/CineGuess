@@ -18,8 +18,8 @@ Movie guessing game where players identify a film from sequential clues revealed
 ### Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/cineguess-server.git
-cd cineguess-server/server
+git clone git@github.com:SamehWalidd/CineGuess.git
+cd CineGuess/server
 npm install
 ```
 
