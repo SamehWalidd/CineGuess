@@ -36,6 +36,61 @@ const IMDB_IDS = [
   "tt0114369", // Se7en
   "tt0056058", // Harakiri
   "tt0364569", // Oldboy
+  "tt0147800", // 10 Things I Hate About You
+  "tt19770238", // Aftersun
+  "tt2209418", // Before Midnight
+  "tt0112471", // Before Sunrise
+  "tt0381681", // Before Sunset
+  "tt0087182", // Dune
+  "tt0432283", // Fantastic Mr. Fox
+  "tt14905854", // Hamnet
+  "tt8946378", // Knives Out
+  "tt0250494", // Legally Blonde
+  "tt0414387", // Pride & Prejudice
+  "tt1041829", // The Proposal
+  "tt0253474", // The Pianist
+  "tt0050083", // 12 Angry Men
+  "tt12042730", // Project Hail Mary
+  "tt0064107", // A Boy Named Charlie Brown
+  "tt1980929", // Begin Again
+  "tt2278388", // The Grand Budapest Hotel
+  "tt1285016", // The Social Network
+  "tt32916440", // Marty Supreme
+  "tt0816692", // Interstellar
+  "tt2582802", // Whiplash
+  "tt0361748", // Inglourious Basterds
+  "tt0892769", // How to Train Your Dragon
+  "tt14849194", // The Holdovers
+  "tt7286456", // Joker
+  "tt1485796", // The Greatest Showman
+  "tt3783958", // La La Land
+  "tt2674426", // Me Before You
+  "tt2361509", // The Intern
+  "tt2194499", // About Time
+  "tt1670345", // Now You See Me
+  "tt1375666", // Inception
+  "tt1572162", // (500) Days of Summer
+  "tt0458352", // The Devil Wears Prada
+  "tt0338013", // Eternal Sunshine of the Spotless Mind
+  "tt0251127", // How to Lose a Guy in 10 Days
+  "tt0097165", // Dead Poets Society
+  "tt6751668", // Parasite
+  "tt0137523", // Fight Club
+  "tt1517268", // Barbie
+  "tt0110912", // Pulp Fiction
+  "tt1877830", // The Batman
+  "tt9362722", // Spider-Man: Across the Spider-Verse
+  "tt0109830", // Forrest Gump
+  "tt16426418", // Challengers
+  "tt0111161", // The Shawshank Redemption
+  "tt0120338", // Titanic
+  "tt0119217", // Good Will Hunting
+  "tt0993846", // The Wolf of Wall Street
+  "tt1798709", // Her
+  "tt0337563", // 13 Going on 30
+  "tt4034228", // Manchester by the Sea
+  "tt2119532", // Hacksaw Ridge
+  "tt2380307", // Coco
 ];
 
 const fetchMovie = async (imdbId) => {
@@ -58,11 +113,11 @@ const mapToSchema = (data) => {
 
   return {
     title:       data.Title,
-    genre:       data.Genre?.split(",")[0].trim(),   // First genre only
+    genre:       data.Genre?.split(",")[0].trim(),   
     year,
-    director:    data.Director?.split(",")[0].trim(), // First director only
-    leadActor:   data.Actors?.split(",")[0].trim(),   // First billed actor
-    plotHint:    data.Plot?.substring(0, 200),        // Hard cap at 200 chars
+    director:    data.Director?.split(",")[0].trim(), 
+    leadActor:   data.Actors?.split(",")[0].trim(),   
+    plotHint:    data.Plot?.substring(0, 200),        
     posterUrl:   data.Poster !== "N/A" ? data.Poster : "",
     submittedBy: "seed",
   };
