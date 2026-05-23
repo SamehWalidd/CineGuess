@@ -1,0 +1,120 @@
+.submit-page {
+  padding-bottom: 2rem;
+}
+
+.submit-container {
+  max-width: 960px;
+}
+
+.submit-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.submit-header h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin-bottom: 0.35rem;
+}
+
+.submit-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .submit-layout {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.submit-form__banner {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.submit-field {
+  margin-bottom: 1.1rem;
+}
+
+.submit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.submit-field__checking {
+  color: var(--clr-muted);
+}
+
+.submit-char-count {
+  float: right;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--clr-muted);
+}
+
+.submit-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-form__submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.submit-preview-panel {
+  position: sticky;
+  top: 1rem;
+}
+
+.movie-preview__title {
+  font-size: 1.25rem;
+  margin: 0 0 0.25rem;
+  letter-spacing: 0.06em;
+}
+
+.movie-preview__hint {
+  margin: 0 0 1.25rem;
+}
+
+.movie-preview__board {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.movie-preview__board .clue-card--revealed {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.submit-confirmation {
+  max-width: 480px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.submit-confirmation__icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.submit-confirmation__title {
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
+
+.submit-confirmation__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.submit-confirmation__actions a {
+  text-decoration: none;
+}

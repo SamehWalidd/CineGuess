@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+:root {
+  --clr-bg:        #0d0d0f;
+  --clr-surface:   #16161a;
+  --clr-surface2:  #1e1e24;
+  --clr-border:    #2a2a35;
+  --clr-accent:    #e8b84b;
+  --clr-accent2:   #c8973a;
+  --clr-text:      #f0eee8;
+  --clr-muted:     #7a7a8a;
+  --clr-danger:    #e05252;
+  --clr-success:   #4caf82;
+  --ff-display:    'Bebas Neue', sans-serif;
+  --ff-body:       'DM Sans', sans-serif;
+  --radius:        10px;
+  --transition:    0.2s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ff-body);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-display);
+  letter-spacing: 0.04em;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+a {
+  color: var(--clr-accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--clr-accent2);
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 0 3rem;
+}
+
+.text-muted {
+  color: var(--clr-muted) !important;
+}
+
+.page-subtitle {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  margin: 0.4rem 0 0;
+  line-height: 1.5;
+}
+
+/* ── Cards ── */
+.cg-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+/* ── Buttons ── */
+.btn-cg-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  font-family: var(--ff-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--clr-bg);
+  background: var(--clr-accent);
+  border: 2px solid var(--clr-accent);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.btn-cg-primary:hover:not(:disabled) {
+  background: var(--clr-accent2);
+  border-color: var(--clr-accent2);
+}
+
+.btn-cg-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-cg-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  font-family: var(--ff-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--clr-accent);
+  background: transparent;
+  border: 2px solid var(--clr-accent);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.btn-cg-outline:hover:not(:disabled) {
+  background: rgba(232, 184, 75, 0.12);
+}
+
+.btn-cg-outline:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Form controls ── */
+.cg-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--clr-muted);
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.cg-input,
+.cg-select {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  color: var(--clr-text);
+  background: var(--clr-surface2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.cg-input:focus,
+.cg-select:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 0 3px rgba(232, 184, 75, 0.15);
+}
+
+.cg-input.is-invalid,
+.cg-select.is-invalid {
+  border-color: var(--clr-danger);
+}
+
+.cg-input.is-valid,
+.cg-select.is-valid {
+  border-color: var(--clr-success);
+}
+
+.cg-error {
+  font-size: 0.8rem;
+  color: var(--clr-danger);
+  margin-top: 0.35rem;
+}
+
+/* ── Spinner ── */
+.cg-spinner {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--clr-border);
+  border-top-color: var(--clr-accent);
+  border-radius: 50%;
+  animation: cg-spin 0.7s linear infinite;
+}
+
+@keyframes cg-spin {
+  to { transform: rotate(360deg); }
+}
