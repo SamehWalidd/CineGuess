@@ -26,7 +26,6 @@ const checkTitle = async (req, res) => {
       return res.status(400).json({ message: "Title query parameter is required" });
     }
 
-   
     const existing = await Movie.findOne({
       title: { $regex: `^${title.trim()}$`, $options: "i" },
     });
@@ -38,6 +37,49 @@ const checkTitle = async (req, res) => {
     res.status(200).json({ exists: false, message: "Title is available" });
   } catch (error) {
     res.status(500).json({ message: "Failed to check title", error: error.message });
+  }
+};
+
+const checkGuessTitle = async (req, res) => {
+  try {
+    const { title, movieId, reveal } = req.body;
+
+    if (!title || title.trim() === "") {
+      return res.status(400).json({ message: "Title is required" });
+    }
+
+    if (!movieId) {
+      return res.status(400).json({ message: "movieId is required" });
+    }
+
+    const movie = await Movie.findById(movieId).select("title year director posterUrl");
+
+    if (!movie) {
+      return res.status(404).json({ message: "Movie not found" });
+    }
+
+    const correct =
+      movie.title.trim().toLowerCase() === title.trim().toLowerCase();
+
+    const payload = { correct };
+
+    if (correct || reveal) {
+      const posterUrl = movie.posterUrl || "";
+      payload.title = movie.title;
+      payload.posterUrl = posterUrl;
+      payload.poster = posterUrl;
+      if (correct) {
+        payload.year = movie.year;
+        payload.director = movie.director;
+      }
+    }
+
+    res.status(200).json(payload);
+  } catch (error) {
+    if (error.name === "CastError") {
+      return res.status(400).json({ message: "Invalid movieId" });
+    }
+    res.status(500).json({ message: "Failed to validate guess", error: error.message });
   }
 };
 
@@ -73,7 +115,6 @@ const createMovie = async (req, res) => {
 
     res.status(201).json({ message: "Movie added successfully", movie });
   } catch (error) {
-    // Mongoose validation error
     if (error.name === "ValidationError") {
       const messages = Object.values(error.errors).map((e) => e.message);
       return res.status(400).json({ message: "Validation failed", errors: messages });
@@ -88,7 +129,7 @@ const getAllMovies = async (req, res) => {
   try {
     const movies = await Movie.find()
       .select("-__v")
-      .sort({ createdAt: -1 });   // Newest first
+      .sort({ createdAt: -1 });
 
     res.status(200).json(movies);
   } catch (error) {
@@ -99,6 +140,7 @@ const getAllMovies = async (req, res) => {
 module.exports = {
   getRandomMovie,
   checkTitle,
+  checkGuessTitle,
   createMovie,
   getAllMovies,
 };
